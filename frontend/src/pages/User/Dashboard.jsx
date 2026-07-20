@@ -1,31 +1,18 @@
-import { useEffect, useState } from "react";
-import api from "../../api/axios";
-import { fetchProfile } from "../../services/authService";
+import Hero from "../../components/Hero";
+import About from "../../components/About";
+import Projects from "../../components/Projects";
+import Contact from "../../components/Contact";
+import Footer from "../../components/Footer";
 
 
 function DashboardUser() {
-  const [userProfile, setUserProfile] = useState(null);
-
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      try {
-        const response = await fetchProfile();
-        setUserProfile(response.data.data);
-        console.log("User profile fetched:", response.data.data);
-      } catch (error) {
-        console.error("Error fetching user profile:", error);
-      }
-    };
-
-    fetchUserProfile();
-  }, []);
-
   return (
-    <div>
-      <h1>Dashboard Page</h1>
-        <div>
-          <p>Email: {userProfile?.email}</p>
-        </div>
+    <div id="home">
+      <Hero fullname="Harsh" />
+      <About />
+      <Projects />
+      <Contact />
+      <Footer />
     </div>
   );
 }

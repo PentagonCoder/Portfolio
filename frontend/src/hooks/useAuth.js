@@ -6,6 +6,7 @@ import { loginRequest, fetchProfile } from "../services/authService";
 export function useAuth() {
 
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
   const login = useAuthStore((state) => state.login);
   const logout = useAuthStore((state) => state.logout);
   const [loading, setLoading] = useState(false);
@@ -39,5 +40,5 @@ export function useAuth() {
     navigate("/login");
   };
 
-  return { handleLogin, handleLogout, loading, error };
-} 
+  return { user, handleLogin, handleLogout, loading, error };
+}
